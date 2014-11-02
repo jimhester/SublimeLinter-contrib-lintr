@@ -11,11 +11,11 @@ SublimeLinter 3 must be installed in order to use this plugin. If SublimeLinter 
 ### Linter installation
 Before using this plugin, you must ensure that `R` and the `lintr` packages are installed on your system. To install `R`, do the following:
 
-1. Install `R` by typing the following in a terminal:
+1. Install `R` with [homebrew](https://github.com/Homebrew/homebrew) by typing the following in a terminal:
    ```
-   <package manager> install R
+   brew install R
    ```
- 2. Install the `lintr` package with [devtools][https://github.com/hadley/devtools]
+ 2. Install the [lintr](https://github.com/jimhester/lintr) package with [devtools](https://github.com/hadley/devtools).
    ```
    library(devtools)
    install_github('jimhester/lintr')
@@ -42,9 +42,9 @@ For general information on how SublimeLinter works with settings, please see [Se
 
 In addition to the standard SublimeLinter settings, SublimeLinter-contrib-R provides its own settings.
 
-|Setting|Description|
-|:------|:----------|
-|linters|The custom linters you would like to use|
+|Setting|Description|Default|
+|:------|:----------|:------|
+|linters|The custom linters you would like to use|default_linters|
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
