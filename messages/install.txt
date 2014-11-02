@@ -1,0 +1,10 @@
+SublimeLinter-contrib-R
+-------------------------------
+This linter plugin for SublimeLinter provides an interface to R.
+
+** IMPORTANT! **
+
+Before this plugin will activate, you *must*
+follow the installation instructions here:
+
+https://github.com/jimhester/SublimeLinter-contrib-R
