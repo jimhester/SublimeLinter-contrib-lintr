@@ -1,7 +1,6 @@
 #
 # linter.py
-# Linter for SublimeLinter3,
-a code checking framework for Sublime Text 3
+# Linter for SublimeLinter3, a code checking framework for Sublime Text 3
 #
 # Written by James Hester
 # Copyright (c) 2014 James Hester
@@ -11,8 +10,7 @@ a code checking framework for Sublime Text 3
 
 """This module exports the R plugin class."""
 
-from SublimeLinter.lint import Linter,
-util
+from SublimeLinter.lint import Linter, util
 
 
 class R(Linter):
