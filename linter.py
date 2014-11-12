@@ -23,7 +23,8 @@ class R(Linter):
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 0.1.0'
     defaults = {
-        'linters': 'default_linters'
+        'linters': 'default_linters',
+        'cache': 'TRUE'
     }
     regex = (
         r'^.+?:(?P<line>\d+):(?P<col>\d+): '
@@ -31,8 +32,7 @@ class R(Linter):
         r'(?P<message>.+)'
     )
     multiline = False
-    line_col_base = (1,
-1)
+    line_col_base = (1,1)
     tempfile_suffix = None
     error_stream = util.STREAM_BOTH
     selectors = {}
@@ -51,6 +51,6 @@ class R(Linter):
                     '--restore',
                     '--no-save',
                     '-e',
-                     'library(lintr);lint(commandArgs(TRUE), {0})'.format(settings['linters']),
+                     'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'], settings['linters']),
                     '--args',
                     '@']
