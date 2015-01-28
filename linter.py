@@ -32,7 +32,7 @@ class Lintr(Linter):
         r'(?P<message>.+)'
     )
     multiline = False
-    line_col_base = (1,1)
+    line_col_base = (1, 1)
     tempfile_suffix = None
     error_stream = util.STREAM_BOTH
     selectors = {}
@@ -46,11 +46,13 @@ class Lintr(Linter):
         """Return a list with the command line to execute."""
 
         settings = self.get_view_settings()
+        command = 'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'],
+                                                                                    settings['linters'])
         return [self.executable_path,
-                    '--slave',
-                    '--restore',
-                    '--no-save',
-                    '-e',
-                     'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'], settings['linters']),
-                    '--args',
-                    '@']
+                '--slave',
+                '--restore',
+                '--no-save',
+                '-e',
+                command,
+                '--args',
+                '@']
