@@ -8,14 +8,14 @@
 # License: MIT
 #
 
-"""This module exports the R plugin class."""
+"""This module exports the Lintr plugin class."""
 
 from SublimeLinter.lint import Linter, util
 
 
-class R(Linter):
+class Lintr(Linter):
 
-    """Provides an interface to R."""
+    """Provides an interface to lintr R package."""
 
     syntax = 'r'
     executable = 'R'
