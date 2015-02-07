@@ -17,7 +17,7 @@ class Lintr(Linter):
 
     """Provides an interface to lintr R package."""
 
-    syntax = 'r'
+    syntax = ['r','enhanced-r']
     executable = 'R'
     version_args = '--slave --restore --no-save -e "packageVersion(\\\"lintr\\\")"'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
