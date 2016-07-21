@@ -11,6 +11,7 @@
 """This module exports the Lintr plugin class."""
 
 from SublimeLinter.lint import Linter, util
+import os
 
 
 class Lintr(Linter):
@@ -19,7 +20,16 @@ class Lintr(Linter):
 
     syntax = ['r', 'enhanced-r']
     executable = 'R'
-    version_args = '--slave --restore --no-save -e "packageVersion(\\\"lintr\\\")"'
+    if os.name == 'nt':
+        version_args = [
+            '--slave',
+            '--restore',
+            '--no-save',
+            '-e',
+            'packageVersion(\'lintr\')'
+        ]
+    else:
+        version_args = '--slave --restore --no-save -e "packageVersion(\\\"lintr\\\")"'
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 0.1.0'
     defaults = {
