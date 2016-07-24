@@ -23,7 +23,7 @@ class Lintr(Linter):
         '--restore',
         '--no-save',
         '-e',
-        '"packageVersion(\'lintr\')"'
+        'packageVersion(\'lintr\')'
     ]
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 0.1.0'
