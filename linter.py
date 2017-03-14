@@ -14,6 +14,7 @@ from SublimeLinter.lint import Linter, util
 
 
 class Lintr(Linter):
+
     """Provides an interface to lintr R package."""
 
     syntax = ['r', 'enhanced-r']
