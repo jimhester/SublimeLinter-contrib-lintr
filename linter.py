@@ -19,7 +19,8 @@ class Lintr(Linter):
 
     syntax = ['r', 'enhanced-r']
     executable = 'R'
-    version_args = '--slave --restore --no-save -e "packageVersion(\\\"lintr\\\")"'
+    # version_args = '--slave --restore --no-save -e "packageVersion(\\\"lintr\\\")"'
+    version_args = '--slave --restore --no-save -e "packageVersion(\'lintr\')"' # single quotes appear to work under Windows. Not sure for other OSes.
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 0.1.0'
     defaults = {
