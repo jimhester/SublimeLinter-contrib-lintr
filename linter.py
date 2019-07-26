@@ -14,12 +14,17 @@ from SublimeLinter.lint import Linter, util
 
 
 class Lintr(Linter):
-
     """Provides an interface to lintr R package."""
 
     syntax = ['r', 'enhanced-r']
     executable = 'R'
-    version_args = '--slave --restore --no-save -e "packageVersion(\\\"lintr\\\")"'
+    version_args = [
+        '--slave',
+        '--restore',
+        '--no-save',
+        '-e',
+        'packageVersion(\'lintr\')'
+    ]
     version_re = r'(?P<version>\d+\.\d+\.\d+)'
     version_requirement = '>= 0.1.0'
     defaults = {
@@ -44,7 +49,6 @@ class Lintr(Linter):
 
     def cmd(self):
         """Return a list with the command line to execute."""
-
         settings = self.get_view_settings()
         command = 'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'],
                                                                                     settings['linters'])
