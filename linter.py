@@ -16,16 +16,6 @@ from SublimeLinter.lint import Linter, util
 class Lintr(Linter):
     """Provides an interface to lintr R package."""
 
-    executable = 'R'
-    version_args = [
-        '--slave',
-        '--restore',
-        '--no-save',
-        '-e',
-        'packageVersion(\'lintr\')'
-    ]
-    version_re = r'(?P<version>\d+\.\d+\.\d+)'
-    version_requirement = '>= 0.1.0'
     defaults = {
         'linters': 'default_linters',
         'cache': 'TRUE',
@@ -40,11 +30,7 @@ class Lintr(Linter):
     line_col_base = (1, 1)
     tempfile_suffix = None
     error_stream = util.STREAM_BOTH
-    selectors = {}
     word_re = None
-    inline_settings = None
-    inline_overrides = None
-    comment_re = r'#'
     tempfile_suffix = 'lintr'
 
     def cmd(self):
