@@ -19,7 +19,7 @@ class Lintr(Linter):
     defaults = {
         'linters': 'default_linters',
         'cache': 'TRUE',
-        'selector': 'source.R'
+        'selector': 'source.r'
     }
     regex = (
         r'^.+?:(?P<line>\d+):(?P<col>\d+): '
