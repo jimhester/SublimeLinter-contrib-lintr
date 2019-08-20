@@ -35,10 +35,10 @@ class Lintr(Linter):
 
     def cmd(self):
         """Return a list with the command line to execute."""
-        settings = self.get_view_settings()
+        settings = self.settings()
         command = 'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'],
                                                                                     settings['linters'])
-        return [self.executable_path,
+        return ['r',
                 '--slave',
                 '--restore',
                 '--no-save',
