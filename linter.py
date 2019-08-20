@@ -28,7 +28,8 @@ class Lintr(Linter):
     version_requirement = '>= 0.1.0'
     defaults = {
         'linters': 'default_linters',
-        'cache': 'TRUE'
+        'cache': 'TRUE',
+        'selector': 'source.R'
     }
     regex = (
         r'^.+?:(?P<line>\d+):(?P<col>\d+): '
