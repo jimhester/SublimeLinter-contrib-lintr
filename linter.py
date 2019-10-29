@@ -16,20 +16,10 @@ from SublimeLinter.lint import Linter, util
 class Lintr(Linter):
     """Provides an interface to lintr R package."""
 
-    syntax = ['r', 'enhanced-r']
-    executable = 'R'
-    version_args = [
-        '--slave',
-        '--restore',
-        '--no-save',
-        '-e',
-        'packageVersion(\'lintr\')'
-    ]
-    version_re = r'(?P<version>\d+\.\d+\.\d+)'
-    version_requirement = '>= 0.1.0'
     defaults = {
         'linters': 'default_linters',
-        'cache': 'TRUE'
+        'cache': 'TRUE',
+        'selector': 'source.r'
     }
     regex = (
         r'^.+?:(?P<line>\d+):(?P<col>\d+): '
@@ -40,19 +30,15 @@ class Lintr(Linter):
     line_col_base = (1, 1)
     tempfile_suffix = None
     error_stream = util.STREAM_BOTH
-    selectors = {}
     word_re = None
-    inline_settings = None
-    inline_overrides = None
-    comment_re = r'#'
     tempfile_suffix = 'lintr'
 
     def cmd(self):
         """Return a list with the command line to execute."""
-        settings = self.get_view_settings()
+        settings = self.settings
         command = 'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'],
                                                                                     settings['linters'])
-        return [self.executable_path,
+        return ['r',
                 '--slave',
                 '--restore',
                 '--no-save',
