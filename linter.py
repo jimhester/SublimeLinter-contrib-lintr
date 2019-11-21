@@ -8,17 +8,14 @@
 # License: MIT
 #
 
-"""This module exports the Lintr plugin class."""
-
 from SublimeLinter.lint import Linter, util
 
-
 class Lintr(Linter):
-    """Provides an interface to lintr R package."""
 
+    """Provides an interface to lintr R package."""
     defaults = {
         'linters': 'default_linters',
-        'cache': 'TRUE',
+        'cache': 'FALSE',
         'selector': 'source.r'
     }
     regex = (
@@ -35,14 +32,17 @@ class Lintr(Linter):
 
     def cmd(self):
         """Return a list with the command line to execute."""
-        settings = self.settings
-        command = 'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'],
-                                                                                    settings['linters'])
-        return ['r',
+
+        # settings = self.settings
+        command = "library(lintr);lint(cache=FALSE,commandArgs(TRUE), default_linters)"
+        return ["R",
                 '--slave',
                 '--restore',
                 '--no-save',
                 '-e',
                 command,
                 '--args',
-                '@']
+                '${temp_file}']
+
+
+
