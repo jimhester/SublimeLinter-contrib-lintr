@@ -36,8 +36,11 @@ class Lintr(Linter):
     def cmd(self):
         """Return a list with the command line to execute."""
         settings = self.settings
-        command = 'library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})'.format(settings['cache'],
-                                                                                    settings['linters'])
+        tmp = settings.context['TMPDIR']
+        linters = self.defaults['linters']
+        command = "library(lintr);lint(cache = '{0}', commandArgs(TRUE), {1})".format(tmp,
+                                                                                      linters)
+
         return ['r',
                 '--slave',
                 '--restore',
@@ -45,4 +48,4 @@ class Lintr(Linter):
                 '-e',
                 command,
                 '--args',
-                '@']
+                '${temp_file}']
