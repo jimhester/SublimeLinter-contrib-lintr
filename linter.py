@@ -28,7 +28,6 @@ class Lintr(Linter):
     )
     multiline = False
     line_col_base = (1, 1)
-    tempfile_suffix = None
     error_stream = util.STREAM_BOTH
     word_re = None
     tempfile_suffix = 'lintr'
