@@ -19,7 +19,7 @@ class Lintr(Linter):
     defaults = {
         'linters': 'default_linters',
         'cache': 'TRUE',
-        'selector': 'source.r'
+        'selector': 'source.r',
     }
     regex = (
         r'^.+?:(?P<line>\d+):(?P<col>\d+): '
@@ -37,15 +37,18 @@ class Lintr(Linter):
         """Return a list with the command line to execute."""
         settings = self.settings
         tmp = settings.context['TMPDIR']
-        linters = self.defaults['linters']
-        command = "library(lintr);lint(cache = '{0}', commandArgs(TRUE), {1})".format(tmp,
-                                                                                      linters)
+        linters = settings.get('linters')
+        command = "library(lintr);lint(cache = '{0}', commandArgs(TRUE), {1})".format(
+            tmp, linters
+        )
 
-        return ['r',
-                '--slave',
-                '--restore',
-                '--no-save',
-                '-e',
-                command,
-                '--args',
-                '${temp_file}']
+        return [
+            'r',
+            '--slave',
+            '--restore',
+            '--no-save',
+            '-e',
+            command,
+            '--args',
+            '${temp_file}',
+        ]
