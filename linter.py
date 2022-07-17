@@ -36,8 +36,10 @@ class Lintr(Linter):
         """Return a list with the command line to execute."""
         settings = self.settings
 
-        command = "library(lintr);lint(cache = '{0}', commandArgs(TRUE), {1})".format(
-            settings.get('cache'), settings.get('linters')
+        command = (
+            "library(lintr);lint(cache = {0}, commandArgs(TRUE), {1})".format(
+                settings.get('cache'), settings.get('linters')
+            )
         )
 
         return [
