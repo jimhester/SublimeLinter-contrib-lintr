@@ -45,6 +45,7 @@ In addition to the standard SublimeLinter settings, SublimeLinter-contrib-lintr 
 |Setting|Description|Default|
 |:------|:----------|:------|
 |linters|The custom linters you would like to use|default_linters|
+|cache|Logical or path to cache directory|TRUE|
 
 ## Contributing
 If you would like to contribute enhancements or fixes, please do the following:
